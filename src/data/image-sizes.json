@@ -1,0 +1,82 @@
+{
+  "/phones/iphone-11-pro-max.png": {
+    "width": 420,
+    "height": 571
+  },
+  "/phones/iphone-11.png": {
+    "width": 420,
+    "height": 571
+  },
+  "/phones/iphone-12-pro-max.png": {
+    "width": 286,
+    "height": 354
+  },
+  "/phones/iphone-12.png": {
+    "width": 420,
+    "height": 564
+  },
+  "/phones/iphone-13-pro-max.png": {
+    "width": 286,
+    "height": 354
+  },
+  "/phones/iphone-13-pro.png": {
+    "width": 268,
+    "height": 327
+  },
+  "/phones/iphone-13.png": {
+    "width": 267,
+    "height": 358
+  },
+  "/phones/iphone-14-pro-max.png": {
+    "width": 286,
+    "height": 354
+  },
+  "/phones/iphone-14-pro.png": {
+    "width": 268,
+    "height": 327
+  },
+  "/phones/iphone-14.png": {
+    "width": 250,
+    "height": 326
+  },
+  "/phones/iphone-15-pro-max.png": {
+    "width": 286,
+    "height": 351
+  },
+  "/phones/iphone-15-pro.png": {
+    "width": 267,
+    "height": 326
+  },
+  "/phones/iphone-15.png": {
+    "width": 252,
+    "height": 327
+  },
+  "/phones/iphone-16-pro-max.png": {
+    "width": 284,
+    "height": 351
+  },
+  "/phones/iphone-16-pro.png": {
+    "width": 266,
+    "height": 325
+  },
+  "/phones/iphone-16.png": {
+    "width": 270,
+    "height": 327
+  },
+  "/phones/iphone-17-pro-max.png": {
+    "width": 284,
+    "height": 351
+  },
+  "/phones/iphone-17-pro.png": {
+    "width": 266,
+    "height": 325
+  },
+  "/phones/iphone-17.png": {
+    "width": 270,
+    "height": 327
+  },
+  "/phones/iphone-se.png": {
+    "width": 264,
+    "height": 380
+  }
+}

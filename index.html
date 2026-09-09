@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-GH">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paindem Smart Cells | Buy Now, Pay Later iPhones in Accra (Pay Small Small)</title>
+  <meta name="description" content="Get your dream iPhone at Paindem Smart Cells in Accra with 40% deposit. Take it home today and pay the rest small small via MTN MoMo or Telecel Cash. 6-Month shop warranty. KFC Circle, Accra.">
+  <meta name="theme-color" content="#0a223f">
+
+  <!-- Social / WhatsApp link preview. In this market a pasted link IS the marketing,
+       so a bare URL with no preview card is a wasted share. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Paindem Smart Cells">
+  <meta property="og:title" content="Pay Small Small iPhones in Accra | Paindem Smart Cells">
+  <meta property="og:description" content="40% deposit, take your iPhone home today, pay the balance daily, weekly or monthly on MoMo. Only your Ghana Card needed — no guarantor, no payslip.">
+  <meta property="og:image" content="/icons/icon-512.png">
+  <meta property="og:locale" content="en_GH">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/png" sizes="48x48" href="/icons/favicon-48.png">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+
+  <!-- Local business structured data: this is what puts the shop in Google's map pack
+       for "iPhone installment Accra". -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ElectronicsStore",
+    "name": "Paindem Smart Cells",
+    "description": "Original iPhones in Ghana on hire purchase. 40% deposit, balance paid small small via Mobile Money.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "KFC Circle, Accra — Opposite Vodafone Office",
+      "addressLocality": "Accra",
+      "addressCountry": "GH"
+    },
+    "telephone": "+233547537715",
+    "priceRange": "GHS 2400 - GHS 16500",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:30",
+        "closes": "19:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+  <script>
+    // Service worker: catalog images are precached so repeat visits cost almost no data.
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/sw.js').catch(function () {
+          // Registration failing (private mode, http, unsupported) must never break the site.
+        });
+      });
+    }
+  </script>
+</body>
+</html>
