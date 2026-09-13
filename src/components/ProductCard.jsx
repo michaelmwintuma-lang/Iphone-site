@@ -144,6 +144,11 @@ export default function ProductCard({ phone }) {
             <ShieldCheck size={13} className="spec-icon text-green" />
             6 Mo. Warranty
           </span>
+          <span className="spec-dot" aria-hidden="true">•</span>
+          <span className="spec-item text-green" title="Paindem 28-Point Hardware Diagnostic Inspection Passed">
+            <CheckCircle2 size={13} className="spec-icon" />
+            28-Pt Certified
+          </span>
         </div>
 
         {/* Price & Installment Breakdown Box */}

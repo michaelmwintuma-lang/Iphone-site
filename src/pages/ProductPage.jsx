@@ -14,6 +14,7 @@ import PaymentSchedule from '../components/PaymentSchedule';
 import ReserveModal from '../components/ReserveModal';
 import PhoneImage from '../components/PhoneImage';
 import PhoneVisualizer from '../components/PhoneVisualizer';
+import DiagnosticSeal from '../components/DiagnosticSeal';
 import Reveal from '../components/Reveal';
 import { ChevronRight, ShieldCheck, BatteryCharging, Smartphone, Truck, CheckCircle2, Sparkles, ArrowRight, Store, CreditCard } from 'lucide-react';
 
@@ -105,8 +106,8 @@ export default function ProductPage() {
                 <span className="spec-pill">
                   <ShieldCheck size={13} className="spec-icon text-cyan" /> 6 Mo. Warranty
                 </span>
-                <span className="spec-pill">
-                  <CheckCircle2 size={13} className="spec-icon text-green" /> Factory Unlocked
+                <span className="spec-pill spec-certified-pill">
+                  <CheckCircle2 size={13} className="spec-icon text-green" /> 28-Point Certified
                 </span>
               </div>
 
@@ -141,61 +142,42 @@ export default function ProductPage() {
                     <button
                       key={f.key}
                       type="button"
-                      className={`product-freq-btn ${frequency === f.key ? 'active' : ''}`}
+                      className={`product-freq-btn ${f.key === frequency ? 'active' : ''}`}
                       onClick={() => setFrequency(f.key)}
+                      aria-pressed={f.key === frequency}
                     >
-                      <strong>{f.label}</strong>
-                      <span>{f.note}</span>
+                      <span>{f.label}</span>
+                      <small>{f.note}</small>
                     </button>
                   ))}
                 </div>
 
-                <div className="product-plan-grid">
-                  <div className="product-plan-cell">
-                    <span className="product-plan-label">
-                      Deposit today ({phone.depositPercent}%)
-                    </span>
-                    <span className="product-plan-value color-deposit">
-                      {formatGHS(plan.deposit)}
-                    </span>
+                <div className="product-installment-card">
+                  <div className="product-inst-row">
+                    <span>Deposit today ({phone.depositPercent}%)</span>
+                    <strong>{formatGHS(plan.deposit)}</strong>
                   </div>
-                  <div className="product-plan-cell">
-                    <span className="product-plan-label">
+                  <div className="product-inst-row hero-inst">
+                    <span>
                       Then {FREQUENCIES.find(f => f.key === frequency).unit}
+                      <small className="product-inst-periods"> ({plan.periods})</small>
                     </span>
-                    <span className="product-plan-value color-weekly">
+                    <strong className="product-inst-val">
                       {formatGHSExact(plan.installment)}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="product-total-disclosure">
-                  <div className="product-total-row">
-                    <span>Payments</span>
-                    <strong>
-                      {plan.periods} ×{' '}
-                      {FREQUENCIES.find(f => f.key === frequency).label.toLowerCase()}
+                      <small>{FREQUENCIES.find(f => f.key === frequency).short}</small>
                     </strong>
                   </div>
-                  <p className="product-total-note">
-                    Settle the balance early at any time and you stop paying the remaining
-                    instalments — no penalty.
-                  </p>
                 </div>
               </div>
 
               {/* Notice for Brand New sealed units */}
               {phone.isNew && (
-                <div className="product-brand-new-card">
-                  <div className="pbn-header">
-                    <Sparkles size={15} className="text-gold" />
-                    <strong>Brand New (Factory Sealed Box)</strong>
-                  </div>
-                  <p>
-                    Most of our phones in stock are tested <strong>Clean UK Used (Grade A+)</strong>.
-                    For this brand new sealed unit, stock and colors move fast with new import shipments.
-                    <strong>Contact our team on WhatsApp</strong> for current sealed availability, colors, and down payment confirmation.
-                  </p>
+                <div className="new-phone-contact-note">
+                  <Sparkles size={14} className="text-gold" />
+                  <span>
+                    <strong>Brand New Sealed Stock:</strong> Factory sealed in Apple box with 1-Year Apple warranty.
+                    Contact via WhatsApp below for current stock availability, color options, and order placement.
+                  </span>
                 </div>
               )}
 
@@ -226,6 +208,15 @@ export default function ProductPage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* 28-Point Hardware Diagnostic Certificate Section */}
+      <section className="product-diagnostic-section">
+        <div className="container">
+          <Reveal>
+            <DiagnosticSeal phone={phone} />
+          </Reveal>
         </div>
       </section>
 

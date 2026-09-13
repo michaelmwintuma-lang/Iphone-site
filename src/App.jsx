@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
-import MobileBottomNav from './components/MobileBottomNav';
 import ScrollToTop from './components/ScrollToTop';
 import CompareDrawer, { CompareProvider } from './components/CompareDrawer';
 import InstallPrompt from './components/InstallPrompt';
@@ -61,7 +60,6 @@ export default function App() {
           <Footer />
           <FloatingWhatsApp />
           <BackToTop />
-          <MobileBottomNav />
           <CompareDrawer />
           <InstallPrompt />
         </div>
