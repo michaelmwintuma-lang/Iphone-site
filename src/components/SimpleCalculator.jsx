@@ -40,7 +40,7 @@ export default function SimpleCalculator({ hideHeader = false }) {
       ? 'Monthly payments (3 months)' 
       : 'Weekly payments (12 weeks)';
 
-  const waMessage = `Hello Paindem Smart Cells! 👋\n\nI want to get the *${selectedPhone.name}* (${selectedPhone.storage}, ${selectedPhone.condition}) on your Pay Small Small scheme:\n\n• Cash Price: ${formatGHS(customPrice)}\n• Down Payment Today (${depositPercent}%): ${formatGHS(plan.deposit)}\n• Payment Speed: ${freqLabel}\n• Installment Amount: ${formatGHSExact(plan.installment)} ${frequency === 'daily' ? '/ day' : frequency === 'monthly' ? '/ month' : '/ week'}\n• Delivery Preference: ${deliveryText}\n\nI have my Ghana Card ready. Please confirm stock and guide me on payment!`;
+  const waMessage = `Hello Paindem Smart Cells! 👋\n\nI want to get the *${selectedPhone.name}* (${selectedPhone.storage}, ${selectedPhone.condition}) on your Buy Now, Pay Later scheme:\n\n• Cash Price: ${formatGHS(customPrice)}\n• Down Payment Today (${depositPercent}%): ${formatGHS(plan.deposit)}\n• Payment Speed: ${freqLabel}\n• Installment Amount: ${formatGHSExact(plan.installment)} ${frequency === 'daily' ? '/ day' : frequency === 'monthly' ? '/ month' : '/ week'}\n• Delivery Preference: ${deliveryText}\n\nI have my Ghana Card ready. Please confirm stock and guide me on payment (MoMo or Bank Transfer)!`;
 
   const waUrl = STORE_CONFIG.makeWhatsAppLink(waMessage);
 
@@ -308,7 +308,11 @@ export default function SimpleCalculator({ hideHeader = false }) {
                   </div>
                   <div className="total-line">
                     <span>Deposit ({depositPercent}%)</span>
-                    <span>{formatGHS(plan.deposit)}</span>
+                    <span>{formatGHS(plan.deposit)} <small style={{ color: 'var(--text-light)', display: 'block', fontSize: '0.74rem' }}>{formatGHS(customPrice)} × {depositPercent}%</small></span>
+                  </div>
+                  <div className="total-line">
+                    <span>Balance financed</span>
+                    <span>{formatGHS(customPrice - plan.deposit)}</span>
                   </div>
                   <div className="total-line total-line-sum">
                     <span>

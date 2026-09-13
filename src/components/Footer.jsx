@@ -19,11 +19,25 @@ export default function Footer() {
               </div>
             </Link>
             <p className="footer-bio">
-              Empowering Ghanaians to own original iPhones with dignity. 40% deposit, take home today, and pay the rest small small via Mobile Money.
+              Empowering Ghanaians to own original iPhones with dignity. 40% deposit, take home today, and Buy Now, Pay Later via Mobile Money or Bank Transfer.
             </p>
             <div className="footer-social-row">
-              <span className="social-pill">Instagram: @paindemsmartcells</span>
-              <span className="social-pill">TikTok: @paindemsmartcells</span>
+              <a
+                href="https://www.instagram.com/paindemsmartcells"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-pill social-pill-link"
+              >
+                Instagram: @paindemsmartcells
+              </a>
+              <a
+                href="https://www.tiktok.com/@paindemsmartcells"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-pill social-pill-link"
+              >
+                TikTok: @paindemsmartcells
+              </a>
             </div>
           </div>
 
@@ -40,13 +54,14 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* MoMo Payment info */}
+          {/* MoMo & Bank Payment info */}
           <div className="footer-col">
             <h4>Payment Channels</h4>
             <ul className="footer-nav">
               <li>MTN Mobile Money (*170#)</li>
               <li>Telecel Cash (*110#)</li>
               <li>AT Money (*110#)</li>
+              <li>Ghana Bank Transfer (All Banks)</li>
               <li>In-Shop Cash / Card at Circle</li>
               <li>Zero Early-Payoff Penalty</li>
             </ul>

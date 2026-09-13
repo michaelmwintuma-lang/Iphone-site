@@ -1,7 +1,7 @@
 {
-  "name": "Paindem Smart Cells — Pay Small Small iPhones",
+  "name": "Paindem Smart Cells — Buy Now Pay Later iPhones",
   "short_name": "Paindem",
-  "description": "Buy original iPhones in Ghana with a 40% deposit and pay the balance small small via Mobile Money.",
+  "description": "Buy original iPhones in Ghana with a 40% deposit and Buy Now, Pay Later via Mobile Money or Bank Transfer.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

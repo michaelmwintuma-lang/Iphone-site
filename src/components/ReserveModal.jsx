@@ -55,9 +55,9 @@ export default function ReserveModal({ open, onClose, phone, plan, frequency }) 
     `• Cash price: ${formatGHS(phone.price)}\n` +
     `• Deposit (${phone.depositPercent}%): ${formatGHS(plan.deposit)}\n` +
     `• Then ${formatGHSExact(plan.installment)} ${unit}\n` +
-    `• MoMo number: ${momo || '(number)'}\n` +
+    `• Phone / MoMo number: ${momo || '(number)'}\n` +
     `• ${fulfilment === 'pickup' ? 'Pickup at Circle showroom' : `Delivery to ${region}`}\n\n` +
-    `I have my Ghana Card ready. Please confirm stock.`;
+    `I have my Ghana Card ready. Please confirm stock and guide me on payment (MoMo or Bank Transfer).`;
 
   const waUrl = STORE_CONFIG.makeWhatsAppLink(waMessage);
 
@@ -69,7 +69,7 @@ export default function ReserveModal({ open, onClose, phone, plan, frequency }) 
     if (e.target.company?.value) return;
 
     if (!name.trim() || momo.replace(/\D/g, '').length < 9) {
-      setError('Please enter your name and a valid Mobile Money number.');
+      setError('Please enter your name and a valid phone / MoMo number.');
       return;
     }
 
@@ -196,7 +196,7 @@ export default function ReserveModal({ open, onClose, phone, plan, frequency }) 
               </label>
 
               <label className="reserve-field">
-                <span>Mobile Money number</span>
+                <span>Phone / MoMo number (For MoMo or Bank Transfer)</span>
                 <input
                   type="tel"
                   value={momo}

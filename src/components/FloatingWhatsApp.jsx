@@ -5,7 +5,7 @@ import { STORE_CONFIG } from '../data/config';
 
 export default function FloatingWhatsApp() {
   const floatUrl = STORE_CONFIG.makeWhatsAppLink(
-    "Hello Paindem Smart Cells! 👋 I am browsing your iPhone website and have a question about the Pay Small Small scheme."
+    "Hello Paindem Smart Cells! 👋 I am browsing your iPhone website and have a question about your Buy Now, Pay Later scheme."
   );
 
   return (
@@ -21,7 +21,7 @@ export default function FloatingWhatsApp() {
           <WhatsAppIcon size={24} />
           <span className="wa-online-dot"></span>
         </div>
-        <span className="wa-label">Pay Small Small</span>
+        <span className="wa-label">Buy Now Pay Later</span>
       </a>
     </aside>
   );

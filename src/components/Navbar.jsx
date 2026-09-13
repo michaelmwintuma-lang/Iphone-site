@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import WhatsAppIcon from './WhatsAppIcon';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { STORE_CONFIG } from '../data/config';
 import { Calculator, ChevronRight, Clock, HelpCircle, MapPin, Menu, Moon, Phone, RefreshCw, Route, ShieldCheck, Smartphone, Sun, Truck, X } from 'lucide-react';
 
@@ -18,129 +18,178 @@ const MOBILE_LINKS = [
 
 export default function Navbar({ theme, toggleTheme }) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isNavVisible, setIsNavVisible] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
+  // Reset navbar to visible when navigating to a new route
   useEffect(() => {
+    setIsNavVisible(true);
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  // Smart scroll: hide on scroll down, drop into view immediately on scroll up
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          const delta = currentScrollY - lastScrollY;
+
+          if (currentScrollY <= 45) {
+            // At the top: resting position
+            setIsNavVisible(true);
+            setIsScrolled(false);
+          } else {
+            setIsScrolled(true);
+
+            // Detect directional movement
+            if (delta > 6) {
+              // Scrolling down -> hide navbar (unless mobile menu drawer is open)
+              if (!mobileMenuOpen) {
+                setIsNavVisible(false);
+              }
+            } else if (delta < -6) {
+              // Scrolling up -> drop the navbar down at the top!
+              setIsNavVisible(true);
+            }
+          }
+
+          lastScrollY = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [mobileMenuOpen]);
 
   const generalWhatsAppUrl = STORE_CONFIG.makeWhatsAppLink(
-    "Hello Paindem Smart Cells! 👋 I want to buy an iPhone on your Pay Small Small scheme with Ghana Card. Please guide me on pickup or nationwide delivery."
-  );
-
-  return (
+    "Hello Paindem Smart Cells! 👋 I want to buy an iPhone on your Buy Now, Pay Later scheme with Ghana Card. Please guide me on pickup or nationwide delivery."
+  );  return (
     <>
-      {/* Top micro announcement bar with Nationwide Delivery & Circle address */}
-      <div className="top-banner">
-        <div className="container top-banner-container">
-          <div className="top-banner-left">
-            <span className="top-banner-badge">
-              <Truck size={12} className="inline-icon" /> Nationwide Delivery
-            </span>
-            <span className="top-banner-text">
-              Delivering to all 16 regions in Ghana • Or pick up at Circle, Accra
-            </span>
-          </div>
-          <div className="top-banner-right">
-            <span><Clock size={13} className="inline-icon" /> Mon–Sat: 8:30 AM – 7:00 PM</span>
-            <a href="tel:0547537715" className="top-banner-phone">
-              <Phone size={13} className="inline-icon" /> 054 753 7715
-            </a>
+      {/* Smart Fixed Header Wrapper — hides on scroll down, drops menu bar on scroll up */}
+      <div
+        className={`header-wrapper ${isScrolled ? 'scrolled' : ''} ${
+          !isNavVisible && !mobileMenuOpen ? 'header--hidden' : 'header--visible'
+        }`}
+      >
+        {/* Top micro announcement bar with Nationwide Delivery & Circle address */}
+        <div className="top-banner">
+          <div className="container top-banner-container">
+            <div className="top-banner-left">
+              <span className="top-banner-badge">
+                <Truck size={12} className="inline-icon" /> Nationwide Delivery
+              </span>
+              <span className="top-banner-text">
+                Delivering to all 16 regions in Ghana • Or pick up at Circle, Accra
+              </span>
+            </div>
+            <div className="top-banner-right">
+              <span><Clock size={13} className="inline-icon" /> Mon–Sat: 8:30 AM – 7:00 PM</span>
+              <a href="tel:0547537715" className="top-banner-phone">
+                <Phone size={13} className="inline-icon" /> 054 753 7715
+              </a>
+            </div>
           </div>
         </div>
+
+        {/* Main Navbar */}
+        <header className="navbar">
+          <div className="container navbar-container">
+            <Link to="/" className="brand-logo" onClick={() => setMobileMenuOpen(false)}>
+              <img src="/logo.jpg" alt="Paindem Smart Cells" className="brand-logo-img" />
+              <div className="brand-info">
+                <div className="brand-title">PAINDEM <span className="brand-accent">SMART CELLS</span></div>
+                <div className="brand-slogan">{STORE_CONFIG.slogan}</div>
+              </div>
+            </Link>
+
+            {/* Everyday Common Menu Words as Router Links */}
+            <nav className="desktop-nav">
+              <NavLink 
+                to="/how-it-works" 
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+              >
+                How It Works
+              </NavLink>
+              <NavLink 
+                to="/calculator" 
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+              >
+                Price Calculator
+              </NavLink>
+              <NavLink 
+                to="/all-iphones" 
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+              >
+                All iPhones
+              </NavLink>
+              <NavLink 
+                to="/trade-in" 
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+              >
+                Trade-In
+              </NavLink>
+              <NavLink 
+                to="/faq" 
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+              >
+                Questions (FAQ)
+              </NavLink>
+              <NavLink 
+                to="/visit-shop" 
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+              >
+                Visit Shop
+              </NavLink>
+            </nav>
+
+            <div className="nav-cta-group">
+              {/* Theme Toggle Button (Light/Dark) */}
+              <button 
+                type="button"
+                className="theme-toggle-btn"
+                onClick={toggleTheme}
+                aria-label={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+                title={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+              >
+                {theme === 'light' ? (
+                  <Moon size={19} className="theme-icon-moon" />
+                ) : (
+                  <Sun size={19} className="theme-icon-sun" />
+                )}
+              </button>
+
+              <a 
+                href={generalWhatsAppUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn btn-whatsapp-nav"
+              >
+                <WhatsAppIcon size={18} />
+                <span>Chat on WhatsApp</span>
+              </a>
+
+              <button 
+                className="mobile-menu-btn"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle navigation menu"
+              >
+                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
+          </div>
+        </header>
       </div>
 
-      {/* Main Sticky Navbar */}
-      <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-        <div className="container navbar-container">
-          <Link to="/" className="brand-logo" onClick={() => setMobileMenuOpen(false)}>
-            <img src="/logo.jpg" alt="Paindem Smart Cells" className="brand-logo-img" />
-            <div className="brand-info">
-              <div className="brand-title">PAINDEM <span className="brand-accent">SMART CELLS</span></div>
-              <div className="brand-slogan">{STORE_CONFIG.slogan}</div>
-            </div>
-          </Link>
-
-          {/* Everyday Common Menu Words as Router Links */}
-          <nav className="desktop-nav">
-            <NavLink 
-              to="/how-it-works" 
-              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-            >
-              How It Works
-            </NavLink>
-            <NavLink 
-              to="/calculator" 
-              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-            >
-              Price Calculator
-            </NavLink>
-            <NavLink 
-              to="/all-iphones" 
-              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-            >
-              All iPhones
-            </NavLink>
-            <NavLink 
-              to="/trade-in" 
-              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-            >
-              Trade-In
-            </NavLink>
-            <NavLink 
-              to="/faq" 
-              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-            >
-              Questions (FAQ)
-            </NavLink>
-            <NavLink 
-              to="/visit-shop" 
-              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-            >
-              Visit Shop
-            </NavLink>
-          </nav>
-
-          <div className="nav-cta-group">
-            {/* Theme Toggle Button (Light/Dark) */}
-            <button 
-              type="button"
-              className="theme-toggle-btn"
-              onClick={toggleTheme}
-              aria-label={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
-              title={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
-            >
-              {theme === 'light' ? (
-                <Moon size={19} className="theme-icon-moon" />
-              ) : (
-                <Sun size={19} className="theme-icon-sun" />
-              )}
-            </button>
-
-            <a 
-              href={generalWhatsAppUrl}
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="btn btn-whatsapp-nav"
-            >
-              <WhatsAppIcon size={18} />
-              <span>Chat on WhatsApp</span>
-            </a>
-
-            <button 
-              className="mobile-menu-btn"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle navigation menu"
-            >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-      </header>
+      {/* Header Placeholder to preserve page flow */}
+      <div className="header-placeholder" aria-hidden="true" />
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (

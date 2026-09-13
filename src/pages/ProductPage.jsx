@@ -13,6 +13,7 @@ import { STORE_CONFIG } from '../data/config';
 import PaymentSchedule from '../components/PaymentSchedule';
 import ReserveModal from '../components/ReserveModal';
 import PhoneImage from '../components/PhoneImage';
+import PhoneVisualizer from '../components/PhoneVisualizer';
 import Reveal from '../components/Reveal';
 import { ChevronRight, ShieldCheck, BatteryCharging, Smartphone, Truck, CheckCircle2, Sparkles, ArrowRight, Store, CreditCard } from 'lucide-react';
 
@@ -28,6 +29,7 @@ export default function ProductPage() {
 
   const [frequency, setFrequency] = useState('weekly');
   const [reserveOpen, setReserveOpen] = useState(false);
+  const [selectedColor, setSelectedColor] = useState(null);
 
   // Scroll to top when moving between storage variants of the same family.
   useEffect(() => {
@@ -43,13 +45,16 @@ export default function ProductPage() {
 
   if (!phone) return <Navigate to="/404" replace />;
 
-  const orderMessage =
-    `Hello Paindem Smart Cells! 👋\n\n` +
-    `I want the *${phone.name}* (${phone.storage}, ${phone.condition}).\n\n` +
-    `• Cash price: ${formatGHS(phone.price)}\n` +
-    `• Deposit (${phone.depositPercent}%): ${formatGHS(plan.deposit)}\n` +
-    `• Then ${formatGHSExact(plan.installment)} ${FREQUENCIES.find(f => f.key === frequency).unit}\n` +
-    `I have my Ghana Card and deposit ready. Circle pickup or delivery to my region?`;
+  const displayColorName = selectedColor ? selectedColor.name : phone.color;
+
+  const orderMessage = phone.isNew
+    ? `Hello Paindem Smart Cells! 👋\n\nI am inquiring about the *Brand New (Factory Sealed)* ${phone.name} (${phone.storage}, ${displayColorName}) on your Buy Now, Pay Later scheme.\n\n• Listed Cash Price: ${formatGHS(phone.price)}\n• Estimated Down Payment (${phone.depositPercent}%): ${formatGHS(plan.deposit)}\n• Plan (${frequency}): ${formatGHSExact(plan.installment)} ${FREQUENCIES.find(f => f.key === frequency).unit}\n\nPlease let me know current sealed stock in ${displayColorName} and pickup/delivery details!`
+    : `Hello Paindem Smart Cells! 👋\n\n` +
+      `I want the *${phone.name}* (${phone.storage}, ${displayColorName}, ${phone.condition}) on Buy Now, Pay Later.\n\n` +
+      `• Cash price: ${formatGHS(phone.price)}\n` +
+      `• Deposit (${phone.depositPercent}%): ${formatGHS(plan.deposit)}\n` +
+      `• Then ${formatGHSExact(plan.installment)} ${FREQUENCIES.find(f => f.key === frequency).unit}\n` +
+      `I have my Ghana Card and deposit ready for ${displayColorName}. Circle pickup or delivery to my region?`;
 
   const orderUrl = STORE_CONFIG.makeWhatsAppLink(orderMessage);
 
@@ -70,22 +75,19 @@ export default function ProductPage() {
       <section className="product-hero">
         <div className="container">
           <div className="product-hero-grid">
-            {/* Image stage */}
+            {/* Interactive 3D Image stage with Front/Back toggle & color swatches */}
             <div className="product-stage">
               <div className="product-stage-glow" aria-hidden="true"></div>
-              <PhoneImage
-                src={phone.image}
-                alt={`${phone.name} in ${phone.color}`}
-                className="product-stage-img"
-                width={420}
-                loading="eager"
-                fetchPriority="high"
-              />
               <div className="product-stage-badges">
                 <span className={`badge-condition ${phone.isNew ? 'is-new' : 'is-used'}`}>
                   {phone.isNew ? '★ Brand New (Sealed)' : '✓ Clean UK Used (Grade A+)'}
                 </span>
               </div>
+              <PhoneVisualizer
+                phone={phone}
+                size="large"
+                onColorChange={setSelectedColor}
+              />
             </div>
 
             {/* Buy panel */}
@@ -182,6 +184,21 @@ export default function ProductPage() {
                 </div>
               </div>
 
+              {/* Notice for Brand New sealed units */}
+              {phone.isNew && (
+                <div className="product-brand-new-card">
+                  <div className="pbn-header">
+                    <Sparkles size={15} className="text-gold" />
+                    <strong>Brand New (Factory Sealed Box)</strong>
+                  </div>
+                  <p>
+                    Most of our phones in stock are tested <strong>Clean UK Used (Grade A+)</strong>.
+                    For this brand new sealed unit, stock and colors move fast with new import shipments.
+                    <strong>Contact our team on WhatsApp</strong> for current sealed availability, colors, and down payment confirmation.
+                  </p>
+                </div>
+              )}
+
               <div className="product-actions">
                 <button
                   type="button"
@@ -198,7 +215,7 @@ export default function ProductPage() {
                   className="btn btn-whatsapp product-wa-btn"
                 >
                   <WhatsAppIcon size={18} />
-                  <span>Order on WhatsApp</span>
+                  <span>{phone.isNew ? 'Contact via WhatsApp for Details' : 'Order on WhatsApp'}</span>
                 </a>
               </div>
 
@@ -258,7 +275,7 @@ export default function ProductPage() {
                 <div className="section-kicker">
                   <Sparkles size={15} className="inline-icon" /> Others also took home
                 </div>
-                <h2 className="section-title">Similar iPhones on Pay Small Small</h2>
+                <h2 className="section-title">Similar iPhones on Buy Now, Pay Later</h2>
               </div>
               <Link to="/all-iphones" className="btn btn-secondary view-all-btn">
                 <span>View all</span>

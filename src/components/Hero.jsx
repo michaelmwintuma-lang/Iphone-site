@@ -5,7 +5,7 @@ import { STORE_CONFIG } from '../data/config';
 import { formatGHS } from '../data/phones';
 import PhoneImage from './PhoneImage';
 import { useCountUp } from '../hooks/useInView';
-import { Check, CheckCircle2, ArrowRight, Shield, Truck, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 /** Devices the hero cycles through. */
 const HERO_DEVICES = [
@@ -64,7 +64,7 @@ export default function Hero() {
   const exampleDaily = 67;    // 465 / 7
 
   const heroWhatsAppUrl = STORE_CONFIG.makeWhatsAppLink(
-    `Hello Paindem Smart Cells! 👋 I saw the ${exampleModel} on your Pay Small Small scheme (${formatGHS(exampleDeposit)} down payment). I have my Ghana Card and want it delivered / picked up.`
+    `Hello Paindem Smart Cells! 👋 I saw the ${exampleModel} on your Buy Now, Pay Later scheme (${formatGHS(exampleDeposit)} down payment). I have my Ghana Card and want it delivered / picked up.`
   );
 
   // Ticker content. Emoji flags read as clip-art on a retail site, so the regions
@@ -81,6 +81,7 @@ export default function Hero() {
     'MTN Mobile Money  *170#',
     'Telecel Cash  *110#',
     'AT Money  *110#',
+    'Ghana Bank Transfer Accepted',
     '6-month written shop warranty',
     '15-minute Ghana Card verification',
     'Factory unlocked, clean IMEI'
@@ -94,33 +95,19 @@ export default function Hero() {
             <div className="hero-text-col">
               <div className="hero-kicker">
                 <img src="/logo.jpg" alt="Paindem Smart Cells" className="hero-kicker-logo" />
-                <span>Ghana Card Hire-Purchase • Pay Small Small</span>
+                <span>Ghana Card Hire-Purchase • Buy Now, Pay Later</span>
               </div>
 
               <h1 className="hero-heading">
                 Your dream iPhone.<br />
-                <span className="hero-gradient-text">Pay small small.</span>
+                <span className="hero-gold-text">Buy Now, Pay Later.</span>
               </h1>
 
-              <div className="hero-slogan-row">
-                <span className="hero-slogan-rule" aria-hidden="true"></span>
-                <span className="hero-slogan-text">{STORE_CONFIG.slogan}</span>
-              </div>
-
               <p className="hero-subheading">
-                Walk in with your <strong>Ghana Card</strong> and a <strong>40% deposit</strong>.
-                Walk out with the phone. Spread the balance <strong>daily, weekly or monthly</strong>{' '}
-                on Mobile Money.
+                Walk in with your <strong>Ghana Card</strong> and a <strong>40% down payment</strong>.
+                Walk out with your iPhone the same day. Spread the rest <strong>daily, weekly, or monthly</strong>{' '}
+                on MTN MoMo, Telecel Cash, or Bank Transfer — no guarantors, no payslips, no employer vetting.
               </p>
-
-              {/* Compact proof chips. These replaced a paragraph box — same promise,
-                  a fraction of the vertical space, and it scans in one glance. */}
-              <ul className="hero-proof-chips">
-                <li><Check size={13} /> No guarantor</li>
-                <li><Check size={13} /> No payslip</li>
-                <li><Check size={13} /> No bank statement</li>
-                <li><Check size={13} /> 15-min approval</li>
-              </ul>
 
               <div className="hero-action-buttons">
                 <Link to="/calculator" className="btn-pill btn-pill-gold">
@@ -166,46 +153,12 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Real Product Photography Stage with Devbox Glassmorphism Transaction Badges */}
+            {/* Clean Flagship Product Showcase */}
             <div className="hero-image-col">
               <div className="hero-image-backdrop"></div>
               
               <div className="hero-device-wrapper">
                 <HeroDevice />
-
-                {/* Floating Glassmorphism Transaction Badge 1 (Top Left) */}
-                <div className="hero-glass-card hero-glass-card-top">
-                  <div className="glass-card-header">
-                    <span className="glass-badge-status">
-                      <span className="glass-pulse-dot"></span>
-                      Order Approved
-                    </span>
-                    <span className="glass-card-time">Just now</span>
-                  </div>
-                  <div className="glass-card-amount">GH₵ 2,480.00</div>
-                  <div className="glass-card-subtitle">iPhone 16 Pro Max · 40% Deposit</div>
-                  <div className="glass-pill-tag">
-                    <CheckCircle2 size={12} /> Ghana Card Verified ✓
-                  </div>
-                </div>
-
-                {/* Floating Glassmorphism Transaction Badge 2 (Bottom Right) */}
-                <div className="hero-glass-card hero-glass-card-bottom">
-                  <div className="glass-card-header">
-                    <span className="glass-badge-status" style={{ color: '#38bdf8' }}>
-                      <Truck size={13} />
-                      VIP Dispatch
-                    </span>
-                    <span className="glass-card-time">Live</span>
-                  </div>
-                  <div style={{ fontWeight: 700, fontSize: '0.95rem', color: '#ffffff' }}>
-                    En Route to Kumasi
-                  </div>
-                  <div className="glass-card-subtitle">MTN MoMo (*170#) · Tracked</div>
-                  <div className="glass-pill-tag" style={{ background: 'rgba(52, 211, 153, 0.16)', borderColor: 'rgba(52, 211, 153, 0.3)', color: '#34d399' }}>
-                    <Shield size={12} /> 6-Month Warranty
-                  </div>
-                </div>
               </div>
             </div>
           </div>

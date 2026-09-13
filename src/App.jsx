@@ -7,6 +7,7 @@ import MobileBottomNav from './components/MobileBottomNav';
 import ScrollToTop from './components/ScrollToTop';
 import CompareDrawer, { CompareProvider } from './components/CompareDrawer';
 import InstallPrompt from './components/InstallPrompt';
+import BackToTop from './components/BackToTop';
 
 // Multi-Page Views
 import HomePage from './pages/HomePage';
@@ -59,6 +60,7 @@ export default function App() {
 
           <Footer />
           <FloatingWhatsApp />
+          <BackToTop />
           <MobileBottomNav />
           <CompareDrawer />
           <InstallPrompt />

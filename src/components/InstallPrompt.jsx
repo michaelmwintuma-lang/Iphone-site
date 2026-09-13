@@ -19,7 +19,8 @@ export default function InstallPrompt() {
       e.preventDefault();
       setDeferred(e);
       // Let the visitor read the page first.
-      setTimeout(() => setVisible(true), 6000);
+      // Wait until the visitor has had time to read the page properly.
+      setTimeout(() => setVisible(true), 25000);
     };
 
     window.addEventListener('beforeinstallprompt', onBeforeInstall);

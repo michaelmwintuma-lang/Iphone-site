@@ -6,7 +6,7 @@ export const STORE_CONFIG = {
   name: "Paindem Smart Cells",
   shortName: "Paindem",
   slogan: "Smart Your Life",
-  tagline: "Your dream iPhone. Pay small small.",
+  tagline: "Your dream iPhone. Buy Now, Pay Later.",
   badge: "Trusted Apple Device Retailer • Circle, Accra & Nationwide Delivery",
 
   contact: {
@@ -36,7 +36,7 @@ export const STORE_CONFIG = {
     days: 84, // 12 weeks * 7 days
     warranty: "6 Months Real Shop Warranty",
     differentiator: "The ONLY thing you need is your Ghana Card and down payment. No guarantor, no payslip, no bank statement.",
-    paymentOptions: ["Daily MoMo", "Weekly MoMo", "Monthly MoMo"]
+    paymentOptions: ["Daily MoMo", "Weekly MoMo", "Monthly MoMo", "Bank Transfer"]
   },
 
   // WhatsApp instant message helper

@@ -66,6 +66,19 @@ export default function ShowroomContact({ hideHeader = false }) {
 
             <div className="showroom-info-block">
               <div className="info-icon-wrapper">
+                <span style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--accent-cyan)' }}>GH₵</span>
+              </div>
+              <div>
+                <h4>Payment Channels Accepted</h4>
+                <p className="address-text">MoMo &amp; Direct Bank Transfer</p>
+                <p className="landmark-text">
+                  MTN MoMo, Telecel Cash, AT Money, Bank Transfer (all Ghana banks), or in-shop cash/card.
+                </p>
+              </div>
+            </div>
+
+            <div className="showroom-info-block">
+              <div className="info-icon-wrapper">
                 <Phone size={22} className="text-green" />
               </div>
               <div>

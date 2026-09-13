@@ -10,8 +10,8 @@ export default function HowItWorksPage() {
       <PageHeader
         kicker="Hire Purchase & Installment Guide"
         icon={HelpCircle}
-        title="How It Works: Pay Small Small Scheme"
-        description="Pick your dream iPhone, submit your Ghana Card, make your down payment, and spread the balance over Daily, Weekly, or Monthly Mobile Money payments."
+        title="How It Works: Buy Now, Pay Later Scheme"
+        description="Pick your dream iPhone, submit your Ghana Card, make your down payment, and spread the balance over Daily, Weekly, or Monthly Mobile Money or Bank Transfer payments."
       />
 
       {/* Main How It Works Component */}
@@ -35,15 +35,15 @@ export default function HowItWorksPage() {
               <div className="step-number-badge">1</div>
               <h4>Select Phone & Send Details</h4>
               <p>
-                Choose your iPhone and send a photo of your valid Ghana Card plus your active Mobile Money number via WhatsApp.
+                Choose your iPhone and send a photo of your valid Ghana Card plus your active Mobile Money or phone number via WhatsApp.
               </p>
             </div>
 
             <div className="delivery-step-card">
               <div className="step-number-badge">2</div>
-              <h4>Pay Down Payment via MoMo</h4>
+              <h4>Pay Down Payment (MoMo / Bank Transfer)</h4>
               <p>
-                Make your 40% or 60% down payment directly to our official merchant account (MTN MoMo, Telecel Cash, or AT Money). You receive an instant digital hire-purchase receipt.
+                Make your 40% or 60% down payment directly to our official business accounts (MTN MoMo, Telecel Cash, AT Money, or Bank Transfer). You receive an instant digital hire-purchase receipt.
               </p>
             </div>
 

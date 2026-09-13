@@ -8,7 +8,10 @@ import { IPHONES } from '../data/phones';
 import ProductCard from '../components/ProductCard';
 import AffordabilityFinder from '../components/AffordabilityFinder';
 import Reveal from '../components/Reveal';
-import { Sparkles, ArrowRight, ShieldCheck, Truck, Calculator, HelpCircle, MapPin } from 'lucide-react';
+import {
+  Sparkles, ArrowRight, ShieldCheck, Calculator,
+  Smartphone, CreditCard, Truck
+} from 'lucide-react';
 
 export default function HomePage() {
   // Select 6 top popular models across budgets for featured showcase
@@ -40,7 +43,7 @@ export default function HomePage() {
               <div className="section-kicker">
                 <Sparkles size={15} className="inline-icon" /> Popular in Ghana Right Now
               </div>
-              <h2 className="section-title">Trending iPhones (UK Used & Brand New)</h2>
+              <h2 className="section-title">Trending iPhones (UK Used &amp; Brand New)</h2>
               <p className="section-subtitle">
                 Tested with pristine 85%+ battery health and backed by a 6-month shop warranty. Delivered nationwide.
               </p>
@@ -68,75 +71,79 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. Quick How-It-Works Teaser */}
-      <section className="home-teaser-section">
+      {/* 4. Compact 3-Step How It Works */}
+      <section className="home-steps-section">
         <div className="container">
-          <Reveal className="home-teaser-card">
-            <div className="teaser-content">
+          <Reveal>
+            <div className="home-steps-header">
               <div className="section-kicker">
                 <ShieldCheck size={15} className="inline-icon" /> Only Ghana Card + Down Payment
               </div>
-              <h2 className="teaser-title">No Guarantor. No Payslip. Take Your Phone Today.</h2>
-              <p className="teaser-desc">
-                Traditional loan apps and bank schemes demand payslips, employer letters, and multiple guarantors. At Paindem Smart Cells, you only need your valid Ghana Card and your 40% or 60% down payment.
-              </p>
-              <div className="teaser-perks">
-                <div className="perk-item">
-                  <span className="perk-bullet">✓</span>
-                  <span>15-minute quick verification</span>
-                </div>
-                <div className="perk-item">
-                  <span className="perk-bullet">✓</span>
-                  <span>Daily, Weekly, or Monthly MoMo payments</span>
-                </div>
-                <div className="perk-item">
-                  <span className="perk-bullet">✓</span>
-                  <span>Nationwide delivery to all 16 regions</span>
-                </div>
-              </div>
-              <div className="teaser-actions">
-                <Link to="/how-it-works" className="btn btn-primary">
-                  <span>See How It Works</span>
-                  <ArrowRight size={16} />
-                </Link>
-                <Link to="/calculator" className="btn btn-secondary">
-                  <Calculator size={16} />
-                  <span>Calculate Daily/Weekly MoMo</span>
-                </Link>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* 5. Bento Grid - Why Choose Paindem (Devbox Pattern) */}
-      <WhyUs />
-
-      {/* 6. Authentic Reviews */}
-      <Reviews />
-
-      {/* 6. Nationwide Delivery & Showroom Strip */}
-      <section className="home-delivery-strip">
-        <div className="container">
-          <Reveal className="delivery-strip-box">
-            <div className="delivery-strip-icon">
-              <Truck size={36} className="text-cyan" />
-            </div>
-            <div className="delivery-strip-info">
-              <h3>We Deliver to All 16 Regions of Ghana</h3>
-              <p>
-                Whether you are in Accra, Kumasi, Takoradi, Tamale, Sunyani, Cape Coast, or Ho, simply submit your Ghana Card details online and receive your phone with secure tracking.
+              <h2 className="home-steps-title">No Guarantor. No Payslip. Take Your Phone Today.</h2>
+              <p className="home-steps-subtitle">
+                Traditional loan apps demand payslips, employer letters, and multiple guarantors.
+                At Paindem Smart Cells, you only need your valid Ghana Card and your deposit.
               </p>
             </div>
-            <div className="delivery-strip-actions">
-              <Link to="/visit-shop" className="btn btn-primary">
-                <MapPin size={16} />
-                <span>Visit Shop or Order Delivery</span>
+
+            <div className="home-steps-row">
+              <div className="home-step-item">
+                <div className="home-step-icon home-step-icon--cyan">
+                  <Smartphone size={22} />
+                </div>
+                <div className="home-step-content">
+                  <div className="home-step-num">Step 01</div>
+                  <h4>Pick your iPhone</h4>
+                  <p>Browse 38+ models. Most are Clean UK Used (Grade A+) with 85%+ battery.</p>
+                </div>
+              </div>
+
+              <div className="home-step-connector" aria-hidden="true" />
+
+              <div className="home-step-item">
+                <div className="home-step-icon home-step-icon--gold">
+                  <CreditCard size={22} />
+                </div>
+                <div className="home-step-content">
+                  <div className="home-step-num">Step 02</div>
+                  <h4>Ghana Card + 40% deposit</h4>
+                  <p>Show your Ghana Card, pay your deposit. Approved in 15 minutes flat.</p>
+                </div>
+              </div>
+
+              <div className="home-step-connector" aria-hidden="true" />
+
+              <div className="home-step-item">
+                <div className="home-step-icon home-step-icon--green">
+                  <Truck size={22} />
+                </div>
+                <div className="home-step-content">
+                  <div className="home-step-num">Step 03</div>
+                  <h4>Walk out with your phone</h4>
+                  <p>Pick up at Circle or get it delivered to your region. Pay the balance by MoMo.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="home-steps-actions">
+              <Link to="/how-it-works" className="btn btn-primary">
+                <span>See Full How It Works</span>
+                <ArrowRight size={16} />
+              </Link>
+              <Link to="/calculator" className="btn btn-secondary">
+                <Calculator size={16} />
+                <span>Calculate Daily/Weekly MoMo</span>
               </Link>
             </div>
           </Reveal>
         </div>
       </section>
+
+      {/* 5. Bento Grid — Why Choose Paindem */}
+      <WhyUs />
+
+      {/* 6. Authentic Reviews */}
+      <Reviews />
     </div>
   );
 }

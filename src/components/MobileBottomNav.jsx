@@ -6,7 +6,7 @@ import { STORE_CONFIG } from '../data/config';
 
 export default function MobileBottomNav() {
   const bottomWhatsAppUrl = STORE_CONFIG.makeWhatsAppLink(
-    "Hello Paindem Smart Cells! 👋 I am browsing your site on mobile and want to ask about your Pay Small Small scheme."
+    "Hello Paindem Smart Cells! 👋 I am browsing your site on mobile and want to ask about your Buy Now, Pay Later scheme."
   );
 
   return (

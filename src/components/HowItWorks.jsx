@@ -1,5 +1,5 @@
 import React from 'react';
-import { Smartphone, CreditCard, Truck, ShieldAlert, CheckCircle2 } from 'lucide-react';
+import { Smartphone, CreditCard, Truck, ShieldAlert, CheckCircle2, Calculator, Percent } from 'lucide-react';
 
 export default function HowItWorks({ hideHeader = false }) {
   return (
@@ -8,7 +8,7 @@ export default function HowItWorks({ hideHeader = false }) {
         {!hideHeader && (
           <div className="section-head text-center">
             <div className="section-kicker">Simple & Transparent</div>
-            <h2 className="section-title">How Pay Small Small Works</h2>
+            <h2 className="section-title">How Buy Now, Pay Later Works</h2>
             <p className="section-subtitle">
               What makes us different: <strong>The only thing you need is your Ghana Card and your down payment</strong>. No guarantor, no payslips, no bank vetting.
             </p>
@@ -24,7 +24,7 @@ export default function HowItWorks({ hideHeader = false }) {
             </div>
             <h3 className="step-title">Pick Your iPhone</h3>
             <p className="step-desc">
-              Browse any model from iPhone 11 to 17 Pro Max. Most are <strong>Clean UK Used (Grade A+)</strong> with tested 85%+ original battery, plus Brand New units. Standard deposit is <strong>40%</strong> (60% on new flagships).
+              Browse any model from iPhone 11 to 17 Pro Max. Most phones in stock are <strong>Clean UK Used (Grade A+)</strong> with tested 85%+ original battery. We also stock <strong>Brand New (sealed) units</strong> — for brand new details and current colors, contact us on WhatsApp. Standard deposit is <strong>40%</strong> (60% on brand new flagships).
             </p>
           </div>
 
@@ -36,7 +36,7 @@ export default function HowItWorks({ hideHeader = false }) {
             </div>
             <h3 className="step-title">Send Your Ghana Card Details</h3>
             <p className="step-desc">
-              No need to look for a guarantor or print company payslips. Send a clear photo of your <strong>Ghana Card</strong> and your active Mobile Money number via WhatsApp, or bring it to our Circle showroom. Approved in 15 minutes.
+              No need to look for a guarantor or print company payslips. Send a clear photo of your <strong>Ghana Card</strong> and your active Mobile Money or contact number via WhatsApp, or bring it to our Circle showroom. Approved in 15 minutes.
             </p>
           </div>
 
@@ -48,7 +48,7 @@ export default function HowItWorks({ hideHeader = false }) {
             </div>
             <h3 className="step-title">Pay Deposit & Receive Phone</h3>
             <p className="step-desc">
-              Pay your down payment via MoMo or cash. <strong>Walk out with your phone at Circle</strong> or <strong>have it dispatched nationwide to your region</strong>. You choose how you want to pay the balance: <strong>Daily, Weekly, or Monthly</strong>!
+              Pay your down payment via MoMo, Bank Transfer, or cash in-shop. <strong>Walk out with your phone at Circle</strong> or <strong>have it dispatched nationwide to your region</strong>. You choose how you want to pay the balance: <strong>Daily, Weekly, or Monthly</strong>!
             </p>
           </div>
         </div>
@@ -75,6 +75,67 @@ export default function HowItWorks({ hideHeader = false }) {
           </div>
         </div>
 
+        {/* Transparent Down Payment Calculation Explainer */}
+        <div className="calculation-explainer-card">
+          <div className="calc-explainer-head">
+            <div className="calc-explainer-kicker">
+              <Calculator size={15} /> Transparent Math Explained
+            </div>
+            <h3>How Your 40% or 60% Down Payment is Calculated</h3>
+            <p>
+              We believe in 100% transparency. Here is the exact, unhidden math of how your down payment and balance are calculated so you can verify before paying a single Cedi.
+            </p>
+          </div>
+
+          <div className="calc-formula-grid">
+            {/* 40% Tier Card */}
+            <div className="formula-tier-card">
+              <div className="formula-tier-header tier-40">
+                <span className="formula-tier-badge">40% Down Payment</span>
+                <span className="formula-tier-scope">Clean UK Used &amp; Standard iPhones (11 to 15 Series)</span>
+              </div>
+              <div className="formula-equation">
+                <div className="equation-step">
+                  <span className="step-label">1. Down Payment</span>
+                  <span className="step-code">Cash Price × 40% (0.40)</span>
+                  <small className="step-help">Pay this to receive your phone immediately</small>
+                </div>
+                <div className="equation-math-example">
+                  <strong>Example: iPhone 15 (GH₵ 6,200)</strong>
+                  <ul>
+                    <li>Down Payment (40%): <code>GH₵ 6,200 × 0.40 = GH₵ 2,480</code></li>
+                    <li>Remaining Balance: <code>GH₵ 6,200 - GH₵ 2,480 = GH₵ 3,720</code></li>
+                    <li>Weekly Installment (12 wks): <code>GH₵ 465 / week</code> (or <code>GH₵ 67 / day</code>)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* 60% Tier Card */}
+            <div className="formula-tier-card">
+              <div className="formula-tier-header tier-60">
+                <span className="formula-tier-badge">60% Down Payment</span>
+                <span className="formula-tier-scope">Brand New Sealed Flagships (iPhone 16 &amp; 17 Pro Series)</span>
+              </div>
+              <div className="formula-equation">
+                <div className="equation-step">
+                  <span className="step-label">1. Down Payment</span>
+                  <span className="step-code">Cash Price × 60% (0.60)</span>
+                  <small className="step-help">Higher deposit due to factory sealed cargo batch value</small>
+                </div>
+                <div className="equation-math-example">
+                  <strong>Example: Brand New iPhone 16 Pro (GH₵ 10,000)</strong>
+                  <ul>
+                    <li>Down Payment (60%): <code>GH₵ 10,000 × 0.60 = GH₵ 6,000</code></li>
+                    <li>Remaining Balance: <code>GH₵ 10,000 - GH₵ 6,000 = GH₵ 4,000</code></li>
+                    <li>Weekly Installment (12 wks): <code>GH₵ 500 / week</code> (or <code>GH₵ 72 / day</code>)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Accepted Payment Channels Strip */}
         <div className="momo-strip">
           <div className="momo-strip-label">
@@ -92,6 +153,10 @@ export default function HowItWorks({ hideHeader = false }) {
             <div className="momo-pill at">
               <span className="momo-dot"></span>
               <strong>AT Money</strong> (*110#)
+            </div>
+            <div className="momo-pill bank">
+              <span className="momo-dot"></span>
+              <strong>Bank Transfer</strong> (All Ghana Banks)
             </div>
           </div>
         </div>
