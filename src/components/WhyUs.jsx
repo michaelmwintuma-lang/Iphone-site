@@ -86,23 +86,23 @@ export default function WhyUs() {
             </div>
           </div>
 
-          {/* Wide Card: 100% Genuine */}
+          {/* Wide Card: 28-Point Diagnostic Seal */}
           <div className="bento-card bento-card-wide bento-card--glow-cyan">
             <div className="bento-card-top">
               <div className="bento-stat-box">
-                <span className="bento-stat-number bento-stat--cyan">100%</span>
-                <span className="bento-stat-label">Genuine &amp; Tested</span>
+                <span className="bento-stat-number bento-stat--cyan">28-Pt</span>
+                <span className="bento-stat-label">Hardware Tested</span>
               </div>
               <div className="bento-card-art bento-art--cyan" aria-hidden="true">
                 <ShieldCheck size={52} strokeWidth={1.2} />
               </div>
             </div>
             <div className="bento-card-body">
-              <h3 className="bento-card-title">Every iPhone backed by a signed 6-month shop warranty.</h3>
+              <h3 className="bento-card-title">Paindem 28-Point Diagnostic Seal &amp; 6-Month Warranty.</h3>
               <p className="bento-card-desc">
-                Clean UK Used (Grade A+) and brand-new sealed units. Fully factory unlocked for
-                MTN, Telecel, and AT with battery health 85%+ guaranteed and on-site testing at our
-                KFC Circle shop.
+                Every iPhone undergoes our rigorous 28-point hardware lab inspection: TrueTone active,
+                Face ID 100% operational, battery health 85%+ guaranteed, zero aftermarket LCDs, clean iCloud,
+                and factory unlocked for all Ghana SIMs (MTN, Telecel, AT).
               </p>
             </div>
           </div>
