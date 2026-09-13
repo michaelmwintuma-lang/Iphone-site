@@ -6,7 +6,7 @@ import { calculateInstallment, formatGHS, formatGHSExact } from '../data/phones'
 import { getPhoneColorOptions, getPhoneDesign } from '../data/phone-colors';
 import { useCompare } from './CompareDrawer';
 import PhoneImage from './PhoneImage';
-import { BatteryCharging, ShieldCheck, Sparkles, Smartphone, GitCompare, ArrowRight, Camera } from 'lucide-react';
+import { BatteryCharging, ShieldCheck, Sparkles, Smartphone, GitCompare, ArrowRight, Camera, CheckCircle2 } from 'lucide-react';
 
 export default function ProductCard({ phone }) {
   const plan = calculateInstallment(phone.price, phone.depositPercent, 'weekly');
